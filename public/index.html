@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f4f2ec">
+  <title>Youth Portal | Service Requests</title>
+  <link rel="stylesheet" href="styles.css">
+  <script src="app.js?v=4" defer></script>
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="#main" aria-label="Youth Portal Help Desk home">
+      <span class="brand-mark" aria-hidden="true">Y</span>
+      <span>Youth Portal <span class="brand-divider">/</span> Help Desk</span>
+    </a>
+    <a class="api-link" href="http://localhost:3000/api/health" target="_blank" rel="noreferrer">
+      <span class="connection-dot" aria-hidden="true"></span> API status
+    </a>
+  </header>
+
+  <main id="main" class="workspace">
+    <section class="intro" aria-labelledby="page-title">
+      <div>
+        <p class="eyebrow">SERVICE REQUESTS <span id="request-count">0</span></p>
+        <h1 id="page-title">Help starts here.</h1>
+        <p class="intro-copy">Send a request to the youth support team, or check on one you already submitted.</p>
+      </div>
+      <div class="intro-stamp" aria-hidden="true"><span>YOUTH</span><span>SUPPORT</span><span>DESK</span></div>
+    </section>
+
+    <div id="notice" class="notice" role="status" aria-live="polite" hidden></div>
+
+    <section class="content-grid" aria-label="Request tools">
+      <section class="form-panel" aria-labelledby="form-title">
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow">01 / YOUR MESSAGE</p>
+            <h2 id="form-title">Make a request</h2>
+          </div>
+          <span class="required-note">All fields required</span>
+        </div>
+        <form id="request-form">
+          <label for="name">Your name</label>
+          <input id="name" name="name" type="text" maxlength="120" autocomplete="name" placeholder="e.g. Avery Ndlovu" required>
+
+          <label for="email">Email address</label>
+          <input id="email" name="email" type="email" maxlength="120" autocomplete="email" placeholder="you@example.com" required>
+
+          <label for="service">What do you need help with?</label>
+          <select id="service" name="service" required>
+            <option value="" disabled selected>Select a service</option>
+            <option>Career guidance</option>
+            <option>CV and job applications</option>
+            <option>Education and training</option>
+            <option>Wellbeing support</option>
+            <option>Other</option>
+          </select>
+
+          <label for="description">Tell us a little more</label>
+          <textarea id="description" name="description" rows="4" maxlength="2000" placeholder="Share the details that will help us respond." required></textarea>
+          <div class="form-actions">
+            <button id="submit-button" class="button button-primary" type="submit">Send request <span aria-hidden="true">&#8594;</span></button>
+            <button id="cancel-edit" class="button button-quiet" type="button" hidden>Cancel edit</button>
+          </div>
+        </form>
+        <p class="privacy-note">Your details are used only to respond to this request.</p>
+      </section>
+
+      <section class="list-panel" aria-labelledby="list-title">
+        <div class="section-heading list-heading">
+          <div>
+            <p class="eyebrow">02 / THE INBOX</p>
+            <h2 id="list-title">Recent requests</h2>
+          </div>
+          <button id="refresh-button" class="icon-button" type="button" aria-label="Refresh requests" title="Refresh requests">&#8635;</button>
+        </div>
+        <div id="request-list" class="request-list" aria-live="polite">
+          <p class="loading-state">Loading requests...</p>
+        </div>
+      </section>
+    </section>
+    <footer class="page-footer"><span>Youth Portal Help Desk</span><span id="api-port">Local learning project · API on port 3001</span></footer>
+  </main>
+</body>
+</html>
